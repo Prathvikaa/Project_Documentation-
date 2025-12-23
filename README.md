@@ -1,7 +1,7 @@
 # Project_Documentation-
 
 ## SEGMENTATION MODELS
-### Model Tested: Mask R-CNN (ResNet-50 FPN)
+___### Model Tested: Mask R-CNN (ResNet-50 FPN)___
 
 **What I Tried:**  
 I used the Mask R-CNN model with a ResNet-50 backbone to detect and segment cricket players in images. The idea was to get clean masks for each player, so I could later extract features for identification.
