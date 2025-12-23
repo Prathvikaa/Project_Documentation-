@@ -18,6 +18,8 @@ The model could detect people and generate masks for them.Confidence was set hig
 In the end, I **decided not to use Mask R-CNN**. While it’s great for general segmentation, it was **too slow** and **didn’t consistently capture all the features** we need for identifying players.
 
 **Output:**
+
+
 <img width="364" height="742" alt="image" src="https://github.com/user-attachments/assets/24f2a73a-402d-4882-8b50-7ad5768ebf4c" />
 <img width="364" height="742" alt="image" src="https://github.com/user-attachments/assets/2ad49169-ed6d-4520-8db2-f6d6f076b7ef" />
 <img width="364" height="742" alt="image" src="https://github.com/user-attachments/assets/95ff9d39-e39f-454d-81c4-29bcd4c59761" />
