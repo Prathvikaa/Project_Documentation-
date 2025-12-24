@@ -52,6 +52,8 @@ Some key technical points:
 I decided to **proceed with YOLOv8-seg** for the segmentation stage in the final workflow. It provides **a good combination of speed, accuracy, and feature preservation**, making it suitable for both real-time detection and downstream player identification tasks.
 
 **Output**
+
+
 <img width="363" height="737" alt="image" src="https://github.com/user-attachments/assets/c149b8fa-53ad-4802-9a67-42ad9f83dc73" />
 <img width="366" height="725" alt="image" src="https://github.com/user-attachments/assets/7bab9203-d40f-4035-9570-7469f5b3fcb7" />
 <img width="363" height="735" alt="image" src="https://github.com/user-attachments/assets/11192512-40c7-4c44-940f-d38ec613bb8e" />
