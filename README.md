@@ -156,7 +156,7 @@ This experiment made it clear that a **full-body or part-based embedding approac
 After observing the limitations of face-based embeddings, I moved on to models designed specifically for **person re-identification**, where the focus is on full-body appearance rather than facial features.
 
 
-### --**OSNet (Omni-Scale Network)**--
+### __**OSNet (Omni-Scale Network)**__
 
 **Why I Tried It**  
 OSNet is a popular person re-identification model that captures visual features at multiple spatial scales. Since cricket player identification depends on clothing, posture, and overall body structure, OSNet appeared to be a strong candidate after rejecting face-based models.
