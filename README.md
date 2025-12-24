@@ -145,6 +145,7 @@ I decided **not to proceed with ArcFace** for the final system. Although it is a
 This experiment made it clear that a **full-body or part-based embedding approach** is required instead of face-only embeddings.
 
 **Output**
+
 <img width="456" height="82" alt="image" src="https://github.com/user-attachments/assets/01bf2cda-b1ef-4cbd-91c7-61b861566dae" />
 <img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/42ed4013-1c23-4cc4-9fd1-52c6c335a5cc" />
 
