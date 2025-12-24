@@ -107,6 +107,51 @@ Instead of implementing many models and encountering the same limitations repeat
 YOLOv8-seg was ultimately chosen not because it is popular, but because it offers the best balance between speed, feature preservation, and practical usability for this task.
 
 
+## **Embedding Model**
+
+After completing the segmentation stage, the next step in the pipeline was to generate embeddings that could be used to identify players using similarity comparison.
+
+---
+
+### **ArcFace (Face-Based Embedding Model)**
+
+**What I Tried**  
+I first experimented with ArcFace, a popular and widely used face recognition embedding model. I used the pretrained `buffalo_l` model from the InsightFace library to extract embeddings from player images and compared them using cosine similarity.
+
+ArcFace produces a **512-dimensional embedding** for each detected face, which is commonly used in face recognition systems.
+
+---
+
+**What Worked**  
+- The model generated stable embeddings when a clear face was visible.
+- Cosine similarity behaved correctly in controlled cases with frontal face images.
+- For clean face images, similarity scores between the same person were consistent.
+
+---
+
+**What Didn’t Work Well**  
+While ArcFace works extremely well for face recognition, it showed clear limitations for this project:
+
+- **Strong dependency on face detection:** If a face was not detected, the embedding could not be generated.
+- **Helmet and occlusion issue:** In many cricket images, players wear helmets or face away from the camera, causing face detection to fail.
+- **Limited information:** ArcFace only uses facial features and ignores other important cues such as jersey color, body structure, posture, and equipment.
+- **Unreliable in real scenarios:** Since face visibility cannot be guaranteed in sports images, the pipeline became unstable.
+
+---
+
+**Decision**  
+I decided **not to proceed with ArcFace** for the final system. Although it is a strong face recognition model, it is **not suitable for cricket player identification**, where faces are often occluded or not visible at all.
+
+This experiment made it clear that a **full-body or part-based embedding approach** is required instead of face-only embeddings.
+
+**Output**
+<img width="456" height="82" alt="image" src="https://github.com/user-attachments/assets/01bf2cda-b1ef-4cbd-91c7-61b861566dae" />
+<img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/42ed4013-1c23-4cc4-9fd1-52c6c335a5cc" />
+
+
+
+
+
 
 
 
