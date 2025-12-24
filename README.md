@@ -190,6 +190,12 @@ I decided **not to continue with OSNet**.
 
 Even though OSNet works well for standard person re-identification problems, it was not reliable enough for cricket player identification. The lack of part-level understanding and the overlap in similarity scores made it unsuitable for achieving high accuracy without retraining or heavy customization.
 
+**Output**
+
+<img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/b8c294b3-0ccd-4c13-842e-89e2e2d0f655" />
+<img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/bd1f2ad1-1e67-4945-9a1d-59a437ee5b96" />
+
+
 
 
 
