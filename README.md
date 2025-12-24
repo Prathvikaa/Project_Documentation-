@@ -150,6 +150,53 @@ This experiment made it clear that a **full-body or part-based embedding approac
 <img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/42ed4013-1c23-4cc4-9fd1-52c6c335a5cc" />
 
 
+---
+
+After observing the limitations of face-based embeddings, I moved on to models designed specifically for **person re-identification**, where the focus is on full-body appearance rather than facial features.
+
+---
+
+### **OSNet (Omni-Scale Network)**
+
+**Why I Tried It**  
+OSNet is a popular person re-identification model that captures visual features at multiple spatial scales. Since cricket player identification depends on clothing, posture, and overall body structure, OSNet appeared to be a strong candidate after rejecting face-based models.
+
+I used a pretrained `osnet_x1_0` model from TorchReID and evaluated embeddings using cosine similarity.
+
+---
+
+**What Worked Well**  
+- The model does not depend on face visibility.
+- It captures global appearance features such as jersey color, body shape, and stance.
+- Embedding extraction is stable and consistent across images.
+
+---
+
+**Where It Fell Short**
+
+During practical testing, several limitations became clear:
+
+- **Weak separation between players**  
+  Similarity scores for the same player and different players were often very close, making it difficult to define a reliable threshold.
+
+- **Sensitive to pose and viewpoint changes**  
+  Changes in camera angle, posture, or movement caused noticeable variation in embeddings.
+
+- **No understanding of body parts**  
+  OSNet looks at the person as a whole. If the upper body, legs, or head were partially hidden or cropped, the embedding quality dropped.
+
+- **Sports-specific challenges were not handled well**  
+  Helmets, bats, pads, and fast motion introduced variations that the model could not consistently deal with.
+
+---
+
+**Final Decision**  
+I decided **not to continue with OSNet**.
+
+Even though OSNet works well for standard person re-identification problems, it was not reliable enough for cricket player identification. The lack of part-level understanding and the overlap in similarity scores made it unsuitable for achieving high accuracy without retraining or heavy customization.
+
+
+
 
 
 
