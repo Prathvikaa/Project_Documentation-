@@ -117,7 +117,7 @@ YOLOv8-seg was ultimately chosen not because it is popular, but because it offer
 After completing the segmentation stage, the next step in the pipeline was to generate embeddings that could be used to identify players using similarity comparison.
 
 
-### __**ArcFace (Face-Based Embedding Model)**__
+### **ArcFace (Face-Based Embedding Model)**
 
 **What I Tried**  
 I first experimented with ArcFace, a popular and widely used face recognition embedding model. I used the pretrained `buffalo_l` model from the InsightFace library to extract embeddings from player images and compared them using cosine similarity.
@@ -156,7 +156,7 @@ This experiment made it clear that a **full-body or part-based embedding approac
 After observing the limitations of face-based embeddings, I moved on to models designed specifically for **person re-identification**, where the focus is on full-body appearance rather than facial features.
 
 
-### **__OSNet (Omni-Scale Network)__**
+### **OSNet (Omni-Scale Network)**
 
 **Why I Tried It**  
 OSNet is a popular person re-identification model that captures visual features at multiple spatial scales. Since cricket player identification depends on clothing, posture, and overall body structure, OSNet appeared to be a strong candidate after rejecting face-based models.
@@ -196,6 +196,53 @@ Even though OSNet works well for standard person re-identification problems, it 
 
 <img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/b8c294b3-0ccd-4c13-842e-89e2e2d0f655" />
 <img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/bd1f2ad1-1e67-4945-9a1d-59a437ee5b96" />
+
+---
+
+Before moving to specialized identity models, I initially started with a more generic image embedding approach to understand how far I could get without task-specific assumptions.
+
+
+### **OpenCLIP (ViT-B/32)**
+
+**Why I Tried It**  
+OpenCLIP is widely known for producing strong image embeddings that capture overall visual meaning. Since it works directly on full images and does not depend on face detection, it felt like a good starting point to test whether general-purpose embeddings could separate different players.
+
+
+**What Looked Promising at First**  
+- The model was easy to integrate and ran without any failures.
+- Every image produced a valid embedding.
+- Visually similar images resulted in high cosine similarity, which initially seemed encouraging.
+
+
+**What Went Wrong**
+
+Once I started comparing players more carefully, a clear issue emerged:
+
+- **Different players looked too similar to the model**  
+  Even when the images were of completely different players, the cosine similarity scores were still high. This made it hard to trust the similarity values.
+
+- **The model cares about “what” not “who”**  
+  OpenCLIP focuses on recognizing the general concept of an image (for example, “a cricket player in uniform”) rather than identifying a specific individual. Because of this, players wearing similar jerseys or standing in similar poses were treated as almost the same person.
+
+- **No clear separation boundary**  
+  The similarity scores for same-player pairs and different-player pairs overlapped heavily, which made threshold-based decisions unreliable.
+
+
+**Final Decision**  
+I decided **not to continue with OpenCLIP**.
+
+Although OpenCLIP is powerful for general image understanding, it is not suitable for player identification. The experiment made it clear that this problem requires identity-aware embeddings, not just visually or semantically similar ones.
+
+This test helped narrow down the direction and confirmed that more specialized embedding models were necessary.
+
+**Output**
+
+<img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/58129406-efd0-4712-ac77-3a02d6be772f" />
+<img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/4298fa03-ac5e-4274-95d9-5993a03f4dac" />
+
+
+
+
 
 
 
