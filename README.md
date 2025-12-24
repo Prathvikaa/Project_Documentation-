@@ -246,7 +246,6 @@ After experimenting with multiple embedding models and understanding their limit
 
 This led me to experiment with a **part-based embedding model**.
 
----
 
 ### **PCB-P6 (Part-based Convolutional Baseline)**
 
@@ -257,7 +256,6 @@ PCB-P6 addresses this by **dividing the person into six horizontal parts** and l
 
 Because of this part-based design, PCB-P6 stood out conceptually, even before looking at numerical results.
 
----
 
 **What Looks Promising So Far**
 
@@ -272,8 +270,7 @@ Because of this part-based design, PCB-P6 stood out conceptually, even before lo
 
 - **Conceptually strong for identity matching**  
   Even when cosine similarity scores were not dramatically better than previous models, the **structure of the representation made more sense** for this problem.
-
----
+  
 
 **Current Observations**
 
@@ -284,7 +281,6 @@ More importantly, the model provides a **strong foundation for improvement**, su
 - Ignoring noisy parts
 - Combining part-level scores instead of relying on a single embedding
 
----
 
 **Why I Decided to Continue with PCB-P6**
 
@@ -292,7 +288,6 @@ Unlike earlier models, PCB-P6 does not fail due to missing faces or excessive ba
 
 Even though the model is **not finalized yet**, its part-based design aligns closely with the requirements of cricket player identification. Because of this, I chose to continue experimenting with PCB-P6 and build further improvements on top of it.
 
----
 
 **Current Status**
 
