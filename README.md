@@ -240,6 +240,71 @@ This test helped narrow down the direction and confirmed that more specialized e
 <img width="390" height="88" alt="image" src="https://github.com/user-attachments/assets/58129406-efd0-4712-ac77-3a02d6be772f" />
 <img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/4298fa03-ac5e-4274-95d9-5993a03f4dac" />
 
+---
+
+After experimenting with multiple embedding models and understanding their limitations, I wanted to explore an approach that could handle the real challenges of cricket player identification more intelligently.
+
+This led me to experiment with a **part-based embedding model**.
+
+---
+
+### **PCB-P6 (Part-based Convolutional Baseline)**
+
+**Why This Model Caught My Attention**  
+One major issue with earlier models was that they treated the entire person as a single entity. In sports images, this becomes a problem because different body regions contribute differently to identity.
+
+PCB-P6 addresses this by **dividing the person into six horizontal parts** and learning embeddings for each part separately. This idea immediately felt relevant for cricket, where features like the helmet, jersey, and leg posture all carry identity information.
+
+Because of this part-based design, PCB-P6 stood out conceptually, even before looking at numerical results.
+
+---
+
+**What Looks Promising So Far**
+
+- **Part-level understanding**  
+  By splitting the person into six regions, the model does not rely on a single global feature. Even if one part is noisy or occluded, other parts can still contribute useful information.
+
+- **More robust to occlusion**  
+  Helmets, bats, or partial occlusions affect only certain body parts. PCB-P6 reduces the impact of such occlusions by distributing identity information across multiple regions.
+
+- **Better alignment with sports data**  
+  Cricket images often vary in pose, camera angle, and movement. A part-based representation is more suitable for these variations than a single global embedding.
+
+- **Conceptually strong for identity matching**  
+  Even when cosine similarity scores were not dramatically better than previous models, the **structure of the representation made more sense** for this problem.
+
+---
+
+**Current Observations**
+
+At this stage, PCB-P6 shows **moderate performance** in terms of cosine similarity and distance. The results are neither exceptionally high nor poor, but they are consistent.
+
+More importantly, the model provides a **strong foundation for improvement**, such as:
+- Weighted part similarity
+- Ignoring noisy parts
+- Combining part-level scores instead of relying on a single embedding
+
+---
+
+**Why I Decided to Continue with PCB-P6**
+
+Unlike earlier models, PCB-P6 does not fail due to missing faces or excessive background influence. Instead, it offers a **clear direction for refinement and experimentation**.
+
+Even though the model is **not finalized yet**, its part-based design aligns closely with the requirements of cricket player identification. Because of this, I chose to continue experimenting with PCB-P6 and build further improvements on top of it.
+
+---
+
+**Current Status**
+
+PCB-P6 is the **active model under experimentation**. The focus is now on improving similarity aggregation, reducing noise from less informative parts, and integrating it effectively with the segmentation pipeline.
+
+**Output**
+
+<img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/ff7ab98a-d6a0-438c-9f88-5c39d64b4e00" />
+<img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/c7030687-5f6f-4fa4-8809-a2f538931148" />
+
+
+
 
 
 
