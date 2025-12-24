@@ -28,6 +28,7 @@ In the end, I **decided not to use Mask R-CNN**. While it’s great for general 
 <img width="357" height="791" alt="image" src="https://github.com/user-attachments/assets/c6482fc5-d6a9-4c9c-8e18-96330256cff9" />
 <img width="356" height="813" alt="image" src="https://github.com/user-attachments/assets/8b81516d-5875-425f-bd24-394f32c863ae" />
 
+---
 
 ### Model Tested: YOLOv8-Seg for Player Segmentation
 
@@ -62,6 +63,7 @@ I decided to **proceed with YOLOv8-seg** for the segmentation stage in the final
 <img width="360" height="806" alt="image" src="https://github.com/user-attachments/assets/aa9c82de-ff86-47a4-88d4-8cb549fca6b6" />
 <img width="360" height="806" alt="image" src="https://github.com/user-attachments/assets/30147e93-5563-4746-a8b6-6d5cd67c1e10" />
 
+---
 
 ## Why Other Instance Segmentation Models Were Not Used
 
@@ -106,28 +108,26 @@ Instead of implementing many models and encountering the same limitations repeat
 
 YOLOv8-seg was ultimately chosen not because it is popular, but because it offers the best balance between speed, feature preservation, and practical usability for this task.
 
+---
 
 ## **Embedding Model**
 
 After completing the segmentation stage, the next step in the pipeline was to generate embeddings that could be used to identify players using similarity comparison.
 
----
 
-### **ArcFace (Face-Based Embedding Model)**
+### __**ArcFace (Face-Based Embedding Model)**__
 
 **What I Tried**  
 I first experimented with ArcFace, a popular and widely used face recognition embedding model. I used the pretrained `buffalo_l` model from the InsightFace library to extract embeddings from player images and compared them using cosine similarity.
 
 ArcFace produces a **512-dimensional embedding** for each detected face, which is commonly used in face recognition systems.
 
----
 
 **What Worked**  
 - The model generated stable embeddings when a clear face was visible.
 - Cosine similarity behaved correctly in controlled cases with frontal face images.
 - For clean face images, similarity scores between the same person were consistent.
 
----
 
 **What Didn’t Work Well**  
 While ArcFace works extremely well for face recognition, it showed clear limitations for this project:
@@ -137,7 +137,6 @@ While ArcFace works extremely well for face recognition, it showed clear limitat
 - **Limited information:** ArcFace only uses facial features and ignores other important cues such as jersey color, body structure, posture, and equipment.
 - **Unreliable in real scenarios:** Since face visibility cannot be guaranteed in sports images, the pipeline became unstable.
 
----
 
 **Decision**  
 I decided **not to proceed with ArcFace** for the final system. Although it is a strong face recognition model, it is **not suitable for cricket player identification**, where faces are often occluded or not visible at all.
@@ -154,7 +153,6 @@ This experiment made it clear that a **full-body or part-based embedding approac
 
 After observing the limitations of face-based embeddings, I moved on to models designed specifically for **person re-identification**, where the focus is on full-body appearance rather than facial features.
 
----
 
 ### **OSNet (Omni-Scale Network)**
 
@@ -163,14 +161,12 @@ OSNet is a popular person re-identification model that captures visual features 
 
 I used a pretrained `osnet_x1_0` model from TorchReID and evaluated embeddings using cosine similarity.
 
----
 
 **What Worked Well**  
 - The model does not depend on face visibility.
 - It captures global appearance features such as jersey color, body shape, and stance.
 - Embedding extraction is stable and consistent across images.
 
----
 
 **Where It Fell Short**
 
@@ -188,7 +184,6 @@ During practical testing, several limitations became clear:
 - **Sports-specific challenges were not handled well**  
   Helmets, bats, pads, and fast motion introduced variations that the model could not consistently deal with.
 
----
 
 **Final Decision**  
 I decided **not to continue with OSNet**.
