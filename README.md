@@ -298,6 +298,18 @@ PCB-P6 is the **active model under experimentation**. The focus is now on improv
 <img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/ff7ab98a-d6a0-438c-9f88-5c39d64b4e00" />
 <img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/c7030687-5f6f-4fa4-8809-a2f538931148" />
 
+---
+
+## Testing Segmentation Model with Embedding Models
+
+After testing the embedding models individually, I moved to a more realistic setup where segmentation and embedding are used together in a single pipeline. For segmentation, I used YOLOv8-seg, and for embeddings, I experimented with PCB-P6 and OSNet.
+
+Before introducing segmentation, when I tested only the embedding models on full player images, PCB-P6 performed better than OSNet. PCB gave more consistent similarity scores for the same player, while OSNet showed more overlap between same and different players. Based on this, PCB initially looked like the stronger embedding model.
+
+However, the behavior changed once segmentation was added. When I tested YOLOv8-seg + PCB-P6 and YOLOv8-seg + OSNet, I observed that OSNet performed slightly better than PCB in the segmented setup. OSNet handled the segmented player crops more robustly, whereas PCB was more sensitive to how the segmentation mask affected different body parts.
+
+Even though the relative performance changed, both pipelines had the same major issue. In both YOLO + PCB and YOLO + OSNet setups, the models sometimes produced high cosine similarity scores for different players, which ideally should not happen. This means that visually similar players (same jersey color, similar pose, similar equipment) were still being matched as the same person.
+
 
 
 
