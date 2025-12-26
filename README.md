@@ -85,14 +85,14 @@ Because of these reasons, even though the segmentation quality is high, SAM was 
 
 ### Cascade Mask R-CNN
 
-From reading research papers, I learned that Cascade Mask R-CNN improves accuracy by refining predictions in multiple stages. However, this also makes the model even slower than standard Mask R-CNN.
+From reading research papers, I learnt that Cascade Mask R-CNN improves accuracy by refining predictions in multiple stages. However, this also makes the model even slower than standard Mask R-CNN.
 
 Since I had already observed that Mask R-CNN was slow and sometimes removed important features like helmets, it was clear that Cascade Mask R-CNN would only make these issues worse. Therefore, it was not implemented.
 
 
 ### YOLACT / YOLACT++
 
-YOLACT models are often described as real-time instance segmentation approaches. From the literature, I found that they achieve speed by simplifying the mask generation process.
+YOLACT models are often described as real-time instance segmentation approaches. I found that they achieve speed by simplifying the mask generation process.
 
 The downside of this trade-off is that the resulting masks can be coarse. Small but important details, such as helmets or player equipment, are sometimes lost. For this project, losing even a small feature can affect player identification accuracy, which made YOLACT unsuitable.
 
