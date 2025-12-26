@@ -311,6 +311,39 @@ However, the behavior changed once segmentation was added. When I tested YOLOv8-
 Even though the relative performance changed, both pipelines had the same major issue. In both YOLO + PCB and YOLO + OSNet setups, the models sometimes produced high cosine similarity scores for different players, which ideally should not happen. This means that visually similar players (same jersey color, similar pose, similar equipment) were still being matched as the same person.
 
 
+## YOLOv8-seg + PCB-P6 
+
+**Output**
+
+# Right prediction 
+
+<img width="585" height="102" alt="image" src="https://github.com/user-attachments/assets/d1d72584-3baf-4548-9619-ecf055aa8a42" />
+<img width="992" height="676" alt="image" src="https://github.com/user-attachments/assets/9a6e2b47-4179-4275-96af-44523a969e8c" />
+
+# Wrong prediction 
+
+<img width="511" height="93" alt="image" src="https://github.com/user-attachments/assets/72a72479-d14b-4521-a41b-888c63209046" />
+<img width="969" height="689" alt="image" src="https://github.com/user-attachments/assets/4a33c74d-b854-4956-9171-c4d9e6846ce1" />
+
+
+## YOLOv8-seg + osnet_x1_0
+
+**Output**
+
+# Right prediction 
+
+<img width="545" height="102" alt="image" src="https://github.com/user-attachments/assets/6668fbe2-628e-4420-832b-374bfcaeda22" />
+<img width="968" height="686" alt="image" src="https://github.com/user-attachments/assets/41c524c2-f349-4a59-8f34-0042ce651234" />
+
+# Wrong prediction 
+
+<img width="580" height="109" alt="image" src="https://github.com/user-attachments/assets/6d7a6928-bb3b-4579-9d5c-5558c86c37d2" />
+<img width="972" height="693" alt="image" src="https://github.com/user-attachments/assets/f7ef3926-7d7b-4a52-a681-7804dee64f4a" />
+
+
+
+
+
 
 
 
