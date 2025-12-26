@@ -295,8 +295,9 @@ PCB-P6 is the **active model under experimentation**. The focus is now on improv
 
 **Output**
 
-<img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/ff7ab98a-d6a0-438c-9f88-5c39d64b4e00" />
-<img width="350" height="86" alt="image" src="https://github.com/user-attachments/assets/c7030687-5f6f-4fa4-8809-a2f538931148" />
+<img width="529" height="101" alt="image" src="https://github.com/user-attachments/assets/2b6df72a-7808-489a-a407-ef974c4c5d8f" />
+<img width="529" height="101" alt="image" src="https://github.com/user-attachments/assets/080f5882-bc0c-47b5-ad3e-80d827ce24de" />
+
 
 ---
 
